@@ -1,7 +1,7 @@
 from pytorch_lightning import Trainer
 from models import VanillaRNN, LSTM, IRNN, FixedIRNN, SirenModel
 from pytorch_lightning.callbacks import ModelCheckpoint
-from pytorch_lightning.logging import TensorBoardLogger
+from pytorch_lightning.loggers import TensorBoardLogger
 import glob, os
 
 class AttrDict(dict):
@@ -103,7 +103,6 @@ if os.path.isdir(run_directory):
             resume_from_checkpoint=run_directory+filename,
             gpus=gpus,
             num_nodes=num_nodes,
-            nb_sanity_val_steps=nb_sanity_val_steps,
             track_grad_norm=track_grad_norm,
             log_gpu_memory=log_gpu_memory
             )
@@ -118,7 +117,6 @@ if os.path.isdir(run_directory):
             # experiment=exp,
             gpus=gpus,
             num_nodes=num_nodes,
-            nb_sanity_val_steps=nb_sanity_val_steps,
             track_grad_norm=track_grad_norm,
             log_gpu_memory=log_gpu_memory,
             )
